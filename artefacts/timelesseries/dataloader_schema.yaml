@@ -1,0 +1,31 @@
+batch_size: 64
+ignore_columns:
+- date
+- datetime
+targets:
+  consumption_classification:
+  - ordinal___PERCENTILE(consumption)==0
+  - ordinal___PERCENTILE(consumption)==1
+  - ordinal___PERCENTILE(consumption)==2
+  - ordinal___PERCENTILE(consumption)==3
+  - ordinal___PERCENTILE(consumption)==4
+  - ordinal___PERCENTILE(consumption)==5
+  - ordinal___PERCENTILE(consumption)==6
+  - ordinal___PERCENTILE(consumption)==7
+  - ordinal___PERCENTILE(consumption)==8
+  - ordinal___PERCENTILE(consumption)==9
+  - ordinal___PERCENTILE(consumption)==10
+  consumption_regression: numerical_consumption__consumption
+  production_classification:
+  - ordinal___PERCENTILE(production)==0
+  - ordinal___PERCENTILE(production)==1
+  - ordinal___PERCENTILE(production)==2
+  - ordinal___PERCENTILE(production)==3
+  - ordinal___PERCENTILE(production)==4
+  - ordinal___PERCENTILE(production)==5
+  - ordinal___PERCENTILE(production)==6
+  - ordinal___PERCENTILE(production)==7
+  - ordinal___PERCENTILE(production)==8
+  - ordinal___PERCENTILE(production)==9
+  - ordinal___PERCENTILE(production)==10
+  production_regression: numerical_production__production

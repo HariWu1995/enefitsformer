@@ -1,0 +1,11 @@
+checkpoint_path: artefacts/timelesseries/expasque_ordinal_regression.pt
+device: !!python/object/apply:torch.device
+- cuda
+- 0
+lr: 0.001
+lr_scheduler: reduce
+num_epochs: 100
+optimizer: adamw
+patience: 11
+tb_logs: false
+verbose: true

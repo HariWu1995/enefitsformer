@@ -1,0 +1,62 @@
+predictions:
+- loss: huber
+  name: p_rg
+  target: production_regression
+  task: regression
+  weight: 1.0
+- loss: huber
+  name: c_rg
+  target: consumption_regression
+  task: regression
+  weight: 1.0
+- classes_weight:
+  - 0.169
+  - 0.338
+  - 0.507
+  - 0.676
+  - 0.8450000000000001
+  - 1.014
+  - 1.183
+  - 1.352
+  - 1.5210000000000001
+  - 1.6900000000000002
+  - 1.8590000000000002
+  loss: crossentroy
+  multilabel: true
+  name: p_cl
+  num_classes: 11
+  target: production_classification
+  task: classification
+  train_only: true
+  weight: 0.69
+- classes_weight:
+  - 0.169
+  - 0.338
+  - 0.507
+  - 0.676
+  - 0.8450000000000001
+  - 1.014
+  - 1.183
+  - 1.352
+  - 1.5210000000000001
+  - 1.6900000000000002
+  - 1.8590000000000002
+  loss: crossentroy
+  multilabel: true
+  name: c_cl
+  num_classes: 11
+  target: consumption_classification
+  task: classification
+  train_only: true
+  weight: 0.69
+transformation:
+  activation: Mish
+  dropout_rate: 0.369
+  instance_norm: false
+  skip_connection: true
+  stack_size:
+  - 64
+  - 128
+  - 256
+  - 512
+  - 1024

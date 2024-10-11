@@ -1,0 +1,10 @@
+count_column: HOURS
+forecast_window: 24
+groupby_columns:
+- categorical_county__county
+- categorical_product_type__product_type
+- boolean_is_business__is_business
+ignore_columns:
+- DAYS
+- datetime
+lookback_window: 72

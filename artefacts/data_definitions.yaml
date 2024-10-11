@@ -1,0 +1,130 @@
+clients:
+  columns:
+    Boolean:
+    - is_business
+    Categorical:
+    - county
+    - product_type
+    Datetime:
+    - date
+    Double:
+    - installed_capacity
+    Index:
+    - data_block_id
+    Integer:
+    - eic_count
+  filename: client.csv
+  rename:
+    installed_capacity: pv_capacity
+electricity_prices:
+  columns:
+    Datetime:
+    - forecast_date
+    - origin_date
+    Double:
+    - euros_per_mwh
+    Index:
+    - data_block_id
+  filename: electricity_prices.csv
+  rename:
+    euros_per_mwh: electricity_price
+    forecast_date: forecast_datetime
+    origin_date: origin_datetime
+forecasted_weather:
+  columns:
+    Datetime:
+    - forecast_datetime
+    - origin_datetime
+    Double:
+    - temperature
+    - dewpoint
+    - snowfall
+    - total_precipitation
+    - cloudcover_total
+    - cloudcover_low
+    - cloudcover_mid
+    - cloudcover_high
+    - 10_metre_u_wind_component
+    - 10_metre_v_wind_component
+    - direct_solar_radiation
+    - surface_solar_radiation_downwards
+    - latitude
+    - longitude
+    Index:
+    - data_block_id
+    Integer:
+    - hours_ahead
+  filename: forecast_weather.csv
+  rename:
+    10_metre_u_wind_component: wind_eastward
+    10_metre_v_wind_component: wind_northward
+    forecast_datetime: datetime
+    surface_solar_radiation_downwards: surface_solar_radiation
+    total_precipitation: precipitation
+gas_prices:
+  columns:
+    Datetime:
+    - origin_date
+    - forecast_date
+    Double:
+    - lowest_price_per_mwh
+    - highest_price_per_mwh
+    Index:
+    - data_block_id
+  filename: gas_prices.csv
+  rename:
+    highest_price_per_mwh: max_gas_price
+    lowest_price_per_mwh: min_gas_price
+historical_weather:
+  columns:
+    Datetime:
+    - datetime
+    Double:
+    - temperature
+    - dewpoint
+    - rain
+    - snowfall
+    - cloudcover_total
+    - cloudcover_low
+    - cloudcover_mid
+    - cloudcover_high
+    - windspeed_10m
+    - winddirection_10m
+    - surface_pressure
+    - direct_solar_radiation
+    - shortwave_radiation
+    - diffuse_radiation
+    - latitude
+    - longitude
+    Index:
+    - data_block_id
+  filename: historical_weather.csv
+  rename:
+    winddirection_10m: wind_direction
+    windspeed_10m: wind_speed
+targets:
+  columns:
+    Boolean:
+    - is_business
+    - is_consumption
+    Categorical:
+    - county
+    - product_type
+    Datetime:
+    - datetime
+    Double:
+    - target
+    Index:
+    - row_id
+    - data_block_id
+    - prediction_unit_id
+  filename: train.csv
+weather_station_map:
+  columns:
+    Categorical:
+    - county
+    - county_name
+    Double:
+    - latitude
+    - longitude
+  filename: weather_station_to_county_mapping.csv

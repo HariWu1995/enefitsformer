@@ -1,0 +1,81 @@
+normalization:
+  dropout_rate: 0.369
+  instance_norm: false
+predictions:
+- loss: huber
+  name: p_rg
+  target: numerical_production__production
+  task: regression
+  weight: 1.69
+- loss: huber
+  name: c_rg
+  target: numerical_consumption__consumption
+  task: regression
+  weight: 1.69
+- classes_weight:
+  - 0.169
+  - 0.338
+  - 0.507
+  - 0.676
+  - 0.8450000000000001
+  - 1.014
+  - 1.183
+  - 1.352
+  - 1.5210000000000001
+  - 1.6900000000000002
+  - 1.8590000000000002
+  loss: crossentroy
+  multilabel: true
+  name: p_cl
+  target:
+  - ordinal___PERCENTILE(production)==0
+  - ordinal___PERCENTILE(production)==1
+  - ordinal___PERCENTILE(production)==2
+  - ordinal___PERCENTILE(production)==3
+  - ordinal___PERCENTILE(production)==4
+  - ordinal___PERCENTILE(production)==5
+  - ordinal___PERCENTILE(production)==6
+  - ordinal___PERCENTILE(production)==7
+  - ordinal___PERCENTILE(production)==8
+  - ordinal___PERCENTILE(production)==9
+  - ordinal___PERCENTILE(production)==10
+  task: classification
+  train_only: true
+  weight: 0.69
+- classes_weight:
+  - 0.169
+  - 0.338
+  - 0.507
+  - 0.676
+  - 0.8450000000000001
+  - 1.014
+  - 1.183
+  - 1.352
+  - 1.5210000000000001
+  - 1.6900000000000002
+  - 1.8590000000000002
+  loss: crossentroy
+  multilabel: true
+  name: c_cl
+  target:
+  - ordinal___PERCENTILE(consumption)==0
+  - ordinal___PERCENTILE(consumption)==1
+  - ordinal___PERCENTILE(consumption)==2
+  - ordinal___PERCENTILE(consumption)==3
+  - ordinal___PERCENTILE(consumption)==4
+  - ordinal___PERCENTILE(consumption)==5
+  - ordinal___PERCENTILE(consumption)==6
+  - ordinal___PERCENTILE(consumption)==7
+  - ordinal___PERCENTILE(consumption)==8
+  - ordinal___PERCENTILE(consumption)==9
+  - ordinal___PERCENTILE(consumption)==10
+  task: classification
+  train_only: true
+  weight: 0.69
+transformation:
+  dropout: 0.369
+  embed_kernel_size: 3
+  model_dim: 512
+  num_heads: 8
+  num_layers: 2
+  topK: 3
